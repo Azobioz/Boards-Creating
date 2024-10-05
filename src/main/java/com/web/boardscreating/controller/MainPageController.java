@@ -1,4 +1,4 @@
-package Controller;
+package com.web.boardscreating.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,6 @@ public class MainPageController {
     public String boardListForm() {
         return "board-list";
     }
-
 
 
 

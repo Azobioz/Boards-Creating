@@ -3,9 +3,7 @@ package com.web.boardscreating.controller;
 
 import com.web.boardscreating.dto.BoardDto;
 import com.web.boardscreating.model.Board;
-import com.web.boardscreating.repository.BoardReporitory;
 import com.web.boardscreating.service.BoardService;
-import com.web.boardscreating.service.serviceimpl.BoardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

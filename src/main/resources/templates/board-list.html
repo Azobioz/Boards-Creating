@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Boards</title>
+    <title>Simple Navigation</title>
     <link rel="stylesheet" th:href="@{/main-page.css}">
 </head>
 <body>
@@ -17,5 +17,14 @@
     <button></button>
 </div>
 
+<div class="board-lists" >
+    <div class="board-item" th:each="board: ${boards}">
+        <a  th:href="@{/boards/{boardId}(boardId=${board.id})}">
+            <h1 th:text="${board.name}"></h1>
+            <h1 th:text="${board.id}"></h1>
+        </a>
+    </div>
+
+</div>
 </body>
 </html>

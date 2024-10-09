@@ -18,13 +18,11 @@
 </div>
 
 <div class="board-lists" >
-    <div class="board-item" th:each="board: ${boards}">
-        <a  th:href="@{/boards/{boardId}(boardId=${board.id})}">
-            <h1 th:text="${board.name}"></h1>
-            <h1 th:text="${board.id}"></h1>
-        </a>
-    </div>
-
+    <a th:href="@{/boards/{boardId}(boardId=${board.id})}" th:each="board: ${boards}" >
+        <div class="board-item">
+            <h1 th:text="${board.name} + ' ' + ${board.id} "></h1>
+        </div>
+    </a>
 </div>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class BoardsController {
     public String createNewBoard(Model model) {
 
         BoardDto board = new BoardDto();
-        board.setName("default");
+        board.setName("Board");
         board = boardService.save(board);
 
         return "redirect:/boards/" + board.getId();

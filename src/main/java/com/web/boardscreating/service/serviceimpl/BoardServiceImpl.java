@@ -2,9 +2,10 @@ package com.web.boardscreating.service.serviceimpl;
 
 import com.web.boardscreating.dto.BoardDto;
 import com.web.boardscreating.model.Board;
-import com.web.boardscreating.repository.BoardReporitory;
+import com.web.boardscreating.repository.BoardRepository;
 import com.web.boardscreating.service.BoardService;
 import lombok.Builder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,16 +18,17 @@ import static com.web.boardscreating.mapper.BoardMapper.*;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-    private BoardReporitory boardReporitory;
+    @Autowired
+    private BoardRepository boardRepository;
 
-    public BoardServiceImpl(BoardReporitory boardReporitory) {
-        this.boardReporitory = boardReporitory;
+    public BoardServiceImpl(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
     }
 
     @Override
     public BoardDto save(BoardDto boardDto) {
         Board board = mapToBoard(boardDto);
-        boardReporitory.save(board);
+        boardRepository.save(board);
         BoardDto newBoardDto = BoardDto.builder()
                 .id(board.getId())
                 .name(board.getName())
@@ -36,14 +38,14 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<BoardDto> findAll() {
-       List<Board> boards = boardReporitory.findAll();
+       List<Board> boards = boardRepository.findAll();
        return boards.stream().map(board -> mapToBoardDto(board))
                .collect(Collectors.toList());
     }
 
     @Override
     public BoardDto findById(Long id) {
-        Optional<Board> board = boardReporitory.findById(id);
+        Optional<Board> board = boardRepository.findById(id);
         return mapToBoardDto(board.get());
     }
 

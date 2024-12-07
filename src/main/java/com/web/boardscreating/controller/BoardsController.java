@@ -2,18 +2,15 @@ package com.web.boardscreating.controller;
 
 
 import com.web.boardscreating.dto.BoardDto;
-import com.web.boardscreating.model.Board;
 import com.web.boardscreating.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/boards")
 public class BoardsController {
 
     public BoardService boardService;
@@ -23,15 +20,15 @@ public class BoardsController {
         this.boardService = boardService;
     }
 
-    @GetMapping("/boards")
-    public String boardListForm(Model model) {
+    @GetMapping
+    public List<BoardDto> boardListForm(Model model) {
         List<BoardDto> boardList = boardService.findAll();
         model.addAttribute("boards", boardList);
-        return "board-list";
+        return boardList;
     }
 
-    @PostMapping("/boards/create")
-    public String createNewBoard(Model model) {
+    @PostMapping("/create")
+    public String createNewBoard() {
 
         BoardDto board = new BoardDto();
         board.setName("Board");
@@ -40,7 +37,7 @@ public class BoardsController {
         return "redirect:/boards/" + board.getId();
     }
 
-    @GetMapping("/boards/{boardId}")
+    @GetMapping("/{boardId}")
     public String createBoardForm(Model model, @PathVariable Long boardId) {
         BoardDto boardDto = boardService.findById(boardId);
 

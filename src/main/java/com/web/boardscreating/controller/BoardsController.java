@@ -21,25 +21,19 @@ public class BoardsController {
     }
 
     @GetMapping
-    public List<BoardDto> boardListForm(Model model) {
-        List<BoardDto> boardList = boardService.findAll();
-        model.addAttribute("boards", boardList);
-        return boardList;
+    public List<BoardDto> boardListForm() {
+        return boardService.getAllBoards();
     }
 
     @PostMapping("/create")
-    public String createNewBoard() {
-
-        BoardDto board = new BoardDto();
-        board.setName("Board");
-        board = boardService.save(board);
-
-        return "redirect:/boards/" + board.getId();
+    public String createNewBoard(@RequestBody BoardDto board) {
+        boardService.saveStudent(board);
+        return "new board created";
     }
 
     @GetMapping("/{boardId}")
     public String createBoardForm(Model model, @PathVariable Long boardId) {
-        BoardDto boardDto = boardService.findById(boardId);
+        BoardDto boardDto = boardService.findStudentById(boardId);
 
         model.addAttribute("board", boardDto);
         return "board";

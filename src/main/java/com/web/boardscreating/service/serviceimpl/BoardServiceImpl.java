@@ -26,25 +26,20 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto save(BoardDto boardDto) {
+    public void saveStudent(BoardDto boardDto) {
         Board board = mapToBoard(boardDto);
         boardRepository.save(board);
-        BoardDto newBoardDto = BoardDto.builder()
-                .id(board.getId())
-                .name(board.getName())
-                .build();
-        return newBoardDto;
     }
 
     @Override
-    public List<BoardDto> findAll() {
+    public List<BoardDto> getAllBoards() {
        List<Board> boards = boardRepository.findAll();
        return boards.stream().map(board -> mapToBoardDto(board))
                .collect(Collectors.toList());
     }
 
     @Override
-    public BoardDto findById(Long id) {
+    public BoardDto findStudentById(Long id) {
         Optional<Board> board = boardRepository.findById(id);
         return mapToBoardDto(board.get());
     }

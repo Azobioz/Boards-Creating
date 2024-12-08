@@ -1,0 +1,46 @@
+/* Общие стили для body и html */
+body, html {
+    font-family: Arial, sans-serif;
+    background: #545E63;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Стили для header */
+.header {
+    background-color: #645050;
+    width: 400px;
+    height: 100%;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+/* Стили для навигационной панели */
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+}
+
+/* Стили для ссылок в навигационной панели */
+.nav-link {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Стили для ссылок при наведении */
+.nav-link:hover {
+    background-color: #0056b3;
+}

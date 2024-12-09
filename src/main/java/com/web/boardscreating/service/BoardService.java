@@ -10,6 +10,6 @@ public interface BoardService {
     void saveBoard(BoardDto boardDto);
     List<BoardDto> getAllBoards();
     BoardDto findBoardById(Long id);
-
+    void deleteBoardById(Long id);
 
 }

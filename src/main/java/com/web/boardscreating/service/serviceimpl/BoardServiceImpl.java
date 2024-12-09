@@ -29,7 +29,11 @@ public class BoardServiceImpl implements BoardService {
     public void saveBoard(BoardDto boardDto) {
         Board board = mapToBoard(boardDto);
         boardRepository.save(board);
+    }
 
+    @Override
+    public void deleteBoardById(Long boardId) {
+        boardRepository.deleteById(boardId);
     }
 
     @Override

@@ -34,8 +34,13 @@ public class BoardsController {
 
     @GetMapping("/{boardId}")
     public BoardDto createBoardForm(@PathVariable Long boardId) {
-        BoardDto boardDto = boardService.findBoardById(boardId);
-        return boardDto;
+        return boardService.findBoardById(boardId);
+    }
+
+    @DeleteMapping("/{boardId}/delete")
+    public String deleteBoard(@PathVariable Long boardId) {
+        boardService.deleteBoardById(boardId);
+        return "board + " + boardId + " deleted";
     }
 
 }

@@ -28,7 +28,6 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void saveBoard(BoardDto boardDto) {
         Board board = mapToBoard(boardDto);
-        board.setName("Board " + (getAllBoards().size() + 1));
         boardRepository.save(board);
 
     }

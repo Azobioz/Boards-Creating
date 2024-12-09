@@ -9,7 +9,7 @@ public interface BoardService {
 
     void saveStudent(BoardDto boardDto);
     List<BoardDto> getAllBoards();
-    BoardDto findStudentById(Long id);
+    BoardDto findBoardById(Long id);
 
 
 }

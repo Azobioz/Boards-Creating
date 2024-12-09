@@ -34,7 +34,7 @@ public class BoardsController {
 
     @GetMapping("/{boardId}")
     public String createBoardForm(Model model, @PathVariable Long boardId) {
-        BoardDto boardDto = boardService.findStudentById(boardId);
+        BoardDto boardDto = boardService.findBoardById(boardId);
 
         model.addAttribute("board", boardDto);
         return "board";

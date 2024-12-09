@@ -29,7 +29,7 @@ function CreateBoard () {
 
     return (
         <div>
-            <Button onClick={sendData}>Create Board</Button>
+            <Button onClick={sendData}></Button>
         </div>
     )
 }

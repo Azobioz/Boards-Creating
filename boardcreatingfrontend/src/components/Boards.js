@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Board from "./Board";
+import BoardPreview from "./BoardPreview";
 
 function Boards() {
-    const [boards, setBoards] = useState([]);
+    const [boards, setBoards] = useState([])
 
     useEffect(() => {
         fetchBoards()
@@ -22,7 +22,7 @@ function Boards() {
     return (
         <div className="boards">
             {boards.map(board => (
-                <Board key={board.id} board={board}/>
+                <BoardPreview key={board.id} board={board}/>
             ))}
         </div>
     )

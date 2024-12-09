@@ -28,7 +28,9 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void saveStudent(BoardDto boardDto) {
         Board board = mapToBoard(boardDto);
+        board.setName("Board " + (getAllBoards().size() + 1));
         boardRepository.save(board);
+
     }
 
     @Override
@@ -39,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto findStudentById(Long id) {
+    public BoardDto findBoardById(Long id) {
         Optional<Board> board = boardRepository.findById(id);
         return mapToBoardDto(board.get());
     }

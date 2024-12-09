@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from "../components/Header";
-import CreateBoardButton from "../components/CreateBoardButton";
+import CreateBoard from "../components/CreateBoard";
 
 function MainPage () {
 
     return (
         <Header>
-            <CreateBoardButton/>
+            <CreateBoard/>
         </Header>
     )
 

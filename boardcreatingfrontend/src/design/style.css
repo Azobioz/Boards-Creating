@@ -7,17 +7,38 @@ body, html {
     align-items: flex-start;
 }
 
+.button-style {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 20px;
+    height: 35px;
+}
+
+.block {
+    background-color: #9CE08B;
+
+}
+
 /* Стили для header */
 .header {
     background-color: #645050;
     width: 400px;
-    height: 100%;
-    padding: 10px 0;
+    height: 35px;
+    padding: 8px 5px 8px 5px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: -10px;
 
 }
 

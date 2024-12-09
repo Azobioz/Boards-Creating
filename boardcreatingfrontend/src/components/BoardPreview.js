@@ -1,12 +1,10 @@
 import React from 'react'
-import {Link} from "react-router";
-
+import {Link} from 'react-router-dom'
 function BoardPreview ({board}) {
     return (
-        <div className="block">
-            <Link to={'/boards/' +board.id}/>
-            {board.name + " " + board.id}
-        </div>
+            <Link to={'/boards/' + board.id} className="block">
+                {board.name + " " + board.id}
+            </Link>
     )
 
 }

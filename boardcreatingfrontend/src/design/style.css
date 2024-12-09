@@ -8,7 +8,7 @@ body, html {
 }
 
 .button-style {
-    background-color: #007bff;
+    background-color: #D9D9D9;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -23,14 +23,17 @@ body, html {
 
 .block {
     background-color: #9CE08B;
-    margin: 5px 20px 20px 20px;
+    margin: 5px 30px 20px 10px;
     width: 150px;
+    color: black;
     height: 170px;
     display: flex;
+    text-decoration: none;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
+    flex-basis: calc(25% - 40px); /* 25% ширины контейнера минус margin */
 }
 
 .boards {
@@ -38,16 +41,14 @@ body, html {
     flex-wrap: wrap;
     align-items: flex-start; /* Выравнивание по верхнему краю */
     width: 900px;
-    margin-top: 30px;
+    margin-top: 60px;
     justify-content: center;
 }
-
-
 
 .header {
     background-color: #645050;
     width: 400px;
-    height: 35px;
+    height: 30px;
     padding: 8px 5px 8px 5px;
     text-align: center;
     display: flex;

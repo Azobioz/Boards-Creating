@@ -20,9 +20,9 @@ function Board () {
         }
     }
 
-    // if (!board) {
-    //     return <div>Загрузка...</div>;
-    // }
+    if (board.length === 0) {
+        return <div>Загрузка...</div>;
+    }
 
     return (
         <div>

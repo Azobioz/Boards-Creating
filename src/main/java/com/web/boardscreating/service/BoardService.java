@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface BoardService {
 
-    void saveStudent(BoardDto boardDto);
+    void saveBoard(BoardDto boardDto);
     List<BoardDto> getAllBoards();
-    BoardDto findStudentById(Long id);
+    BoardDto findBoardById(Long id);
 
 
 }

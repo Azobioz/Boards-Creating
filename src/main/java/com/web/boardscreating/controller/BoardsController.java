@@ -28,13 +28,13 @@ public class BoardsController {
 
     @PostMapping("/create")
     public String createNewBoard(@RequestBody BoardDto board) {
-        boardService.saveStudent(board);
+        boardService.saveBoard(board);
         return "new board created";
     }
 
     @GetMapping("/{boardId}")
     public String createBoardForm(Model model, @PathVariable Long boardId) {
-        BoardDto boardDto = boardService.findStudentById(boardId);
+        BoardDto boardDto = boardService.findBoardById(boardId);
 
         model.addAttribute("board", boardDto);
         return "board";

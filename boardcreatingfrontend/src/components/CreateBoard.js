@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Button from "./Button";
 
-function CreateBoardButton () {
+function CreateBoard () {
 
     const [data, setData] = useState({
         name: 'Board'
@@ -34,4 +34,4 @@ function CreateBoardButton () {
     )
 }
 
-export default CreateBoardButton
+export default CreateBoard

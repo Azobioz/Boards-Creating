@@ -28,7 +28,7 @@ function Board () {
         <div>
             <h1>{board.name}</h1>
             <p>ID: {board.id}</p>
-            {/* Добавьте другие детали доски, если нужно */}
+
         </div>
     );
 }

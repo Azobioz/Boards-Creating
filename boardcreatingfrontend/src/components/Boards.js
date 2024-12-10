@@ -19,10 +19,14 @@ function Boards() {
         }
     }
 
+    const handleDeleteBoard = (boardId) => {
+        setBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
+    }
+
     return (
         <div className="boards">
             {boards.map(board => (
-                <BoardPreview key={board.id} board={board}/>
+                <BoardPreview key={board.id} board={board} onDelete={handleDeleteBoard}/>
             ))}
         </div>
     )

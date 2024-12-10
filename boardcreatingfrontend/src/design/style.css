@@ -7,18 +7,32 @@ body, html {
     align-items: flex-start;
 }
 
-.button-style {
+.button{
     background-color: #D9D9D9;
     color: white;
     border: none;
     padding: 10px 20px;
-    margin: 5px;
     text-decoration: none;
+    margin: 5px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: 20px;
     height: 35px;
+}
+
+
+.button-delete {
+    margin-bottom: 80px;
+    width: 100px;
+
+}
+
+.button svg {
+    width: 30px;            /* Устанавливаем ширину иконки */
+    height: 30px; /* Устанавливаем высоту иконки */
+    fill: #837170;     /* Используем цвет текста для иконки */
+    margin-left: -15px;
+    margin-top: -6px;
 }
 
 .block {
@@ -27,12 +41,18 @@ body, html {
     color: black;
     height: 170px;
     display: flex;
-    text-decoration: none;
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+
     align-items: flex-end; /* Располагаем содержимое снизу */
     justify-content: center;
     text-align: center;
     font-size: 20px;
     flex-basis: calc(25% - 40px); /* 25% ширины контейнера минус margin */
+}
+
+.block a {
+    text-decoration: none;
+    color: black;
 }
 
 .boards {
@@ -42,6 +62,7 @@ body, html {
     width: 900px;
     margin-top: 60px;
     justify-content: center;
+
 }
 
 .header {

@@ -1,11 +1,13 @@
 import React from 'react'
 
-function Button ({onClick}) {
+function Button ({onClick, icon}) {
 
 
 
     return (
-        <button onClick={onClick} className="button-style"></button>
+        <button onClick={onClick} className="button">
+            {icon}
+        </button>
     )
 
 }

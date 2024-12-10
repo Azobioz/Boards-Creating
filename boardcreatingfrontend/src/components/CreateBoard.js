@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Button from "./Button";
+import { TiPlus } from "react-icons/ti";
 
 function CreateBoard () {
 
@@ -19,17 +20,19 @@ function CreateBoard () {
 
             if (response.ok) {
                 console.log('Доска успешно создана');
-            } else {
+            }
+            else {
                 console.error('Ошибка при создании доски');
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.error('Ошибка при создании доски: ' + error);
         }
     }
 
     return (
         <div>
-            <Button onClick={sendData}></Button>
+            <Button className='button-delete' onClick={sendData} icon={<TiPlus/>}></Button>
         </div>
     )
 }

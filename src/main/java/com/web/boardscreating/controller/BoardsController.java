@@ -4,6 +4,7 @@ package com.web.boardscreating.controller;
 import com.web.boardscreating.dto.BoardDto;
 import com.web.boardscreating.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,14 +40,15 @@ public class BoardsController {
 
     @DeleteMapping("/{boardId}/delete")
     public String deleteBoard(@PathVariable Long boardId) {
+        String  boardName = boardService.findBoardById(boardId).getName();
         boardService.deleteBoardById(boardId);
-        return boardService.findBoardById(boardId).getName() + " is deleted";
+        return boardName + " is deleted";
     }
 
-    @PutMapping("/boards/{boardId}/edit")
+    @PutMapping("/{boardId}/edit")
     public String editBoard(@PathVariable Long boardId, @RequestBody BoardDto board) {
         boardService.editBoardById(boardId, board);
-        return boardService.findBoardById(boardId).getName() +  "is edited";
+        return boardService.findBoardById(boardId).getName() +  " is edited";
     }
 
 }

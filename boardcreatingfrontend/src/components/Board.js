@@ -27,7 +27,7 @@ function Board () {
 
     return (
         <div>
-            <BoardHeader board={board}/>
+            <BoardHeader board={board} setBoard={setBoard}/>
         </div>
     );
 }

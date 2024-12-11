@@ -16,7 +16,7 @@ function CreateBoard ({setBoards}) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
-            });
+            })
 
             const newBoardList = await fetch('http://localhost:8080/boards')
             const newData = await newBoardList.json()

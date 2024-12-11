@@ -14,14 +14,17 @@ function BoardPreview ({board, onDelete}) {
             }
         })
         if (response.ok) {
+            console.log('Удаление ' + board.name)
             onDelete(board.id)
         }
     }
 
+
+
     return (
         <div className='block'>
             <Link to={'/boards/' + board.id}>
-                {board.name + " " + board.id}
+                {board.name}
             </Link>
             <Button onClick={deleteBoard} icon={<TiDelete />} className='delete-button'/>
         </div>

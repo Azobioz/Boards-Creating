@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router";
+import BoardHeader from "./BoardHeader";
 
 function Board () {
     const {boardId}  = useParams();
@@ -26,9 +27,7 @@ function Board () {
 
     return (
         <div>
-            <h1>{board.name}</h1>
-            <p>ID: {board.id}</p>
-
+            <BoardHeader board={board}/>
         </div>
     );
 }

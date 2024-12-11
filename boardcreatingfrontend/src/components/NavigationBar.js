@@ -1,7 +1,7 @@
 import React from 'react';
 import '../design/style.css'
 
-function Header ({children}) {
+function NavigationBar ({children}) {
 
     return (
         <header className="header">
@@ -11,4 +11,4 @@ function Header ({children}) {
 
 }
 
-export default Header;
+export default NavigationBar;

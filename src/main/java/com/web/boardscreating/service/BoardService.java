@@ -11,5 +11,6 @@ public interface BoardService {
     List<BoardDto> getAllBoards();
     BoardDto findBoardById(Long id);
     void deleteBoardById(Long id);
+    void editBoardById(Long id, BoardDto boardDto);
 
 }

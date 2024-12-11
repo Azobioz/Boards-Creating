@@ -29,7 +29,7 @@ public class BoardsController {
     @PostMapping("/create")
     public String createNewBoard(@RequestBody BoardDto board) {
         boardService.saveBoard(board);
-        return "new board created";
+        return "new board is created";
     }
 
     @GetMapping("/{boardId}")
@@ -40,7 +40,13 @@ public class BoardsController {
     @DeleteMapping("/{boardId}/delete")
     public String deleteBoard(@PathVariable Long boardId) {
         boardService.deleteBoardById(boardId);
-        return "board + " + boardId + " deleted";
+        return boardService.findBoardById(boardId).getName() + " is deleted";
+    }
+
+    @PutMapping("/boards/{boardId}/edit")
+    public String editBoard(@PathVariable Long boardId, @RequestBody BoardDto board) {
+        boardService.editBoardById(boardId, board);
+        return boardService.findBoardById(boardId).getName() +  "is edited";
     }
 
 }

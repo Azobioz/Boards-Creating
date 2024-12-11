@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import BoardPreview from "./BoardPreview";
+import CreateBoard from "./CreateBoard";
 
-function Boards() {
-    const [boards, setBoards] = useState([])
+function Boards({boards, setBoards}) {
 
     useEffect(() => {
         fetchBoards()
@@ -23,11 +23,15 @@ function Boards() {
         setBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
     }
 
+
+
     return (
-        <div className="boards">
-            {boards.map(board => (
-                <BoardPreview key={board.id} board={board} onDelete={handleDeleteBoard}/>
-            ))}
+        <div>
+            <div className="boards">
+                {boards.map(board => (
+                    <BoardPreview key={board.id} board={board} onDelete={handleDeleteBoard} />
+                ))}
+            </div>
         </div>
     )
 }

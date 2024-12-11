@@ -20,6 +20,14 @@ body, html {
     height: 35px;
 }
 
+.board-header {
+    position: fixed;
+    width: 400px;
+    height: 50px;
+    background-color: #645050;
+    top: 12px;
+    left: 14px;
+}
 
 .button-delete {
     margin-bottom: 80px;

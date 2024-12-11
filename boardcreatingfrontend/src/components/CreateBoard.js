@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Button from "./Button";
 import { TiPlus } from "react-icons/ti";
 
-function CreateBoard () {
+function CreateBoard ({setBoards}) {
 
     const [data, setData] = useState({
         name: 'Board'
@@ -10,7 +10,7 @@ function CreateBoard () {
 
     const sendData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/boards/create', {
+            const createBoard = await fetch('http://localhost:8080/boards/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -18,7 +18,11 @@ function CreateBoard () {
                 body: JSON.stringify(data)
             });
 
-            if (response.ok) {
+            const newBoardList = await fetch('http://localhost:8080/boards')
+            const newData = await newBoardList.json()
+            setBoards(newData)
+
+            if (createBoard.ok) {
                 console.log('Доска успешно создана');
             }
             else {

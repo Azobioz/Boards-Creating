@@ -37,6 +37,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public void editBoardById(Long id, BoardDto boardDto) {
+        Board editedBoard = boardRepository.findById(id).get();
+        editedBoard.setName(boardDto.getName());
+        boardRepository.save(editedBoard);
+    }
+
+    @Override
     public List<BoardDto> getAllBoards() {
        List<Board> boards = boardRepository.findAll();
        return boards.stream().map(board -> mapToBoardDto(board))

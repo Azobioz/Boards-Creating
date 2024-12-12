@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function EditableBoardName({board, setBoard, initialText }) {
-    const [isEditing, setIsEditing] = useState(false); // Состояние для отслеживания режима редактирования
+    const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState(initialText); // Текущий текст
 
 
@@ -30,15 +30,15 @@ function EditableBoardName({board, setBoard, initialText }) {
     }
 
     return (
-        <div>
+        <div className='board-header-board-name'>
             {isEditing ? (
                 <input
                     type="text"
                     value={text}
                     onChange={ e => setText(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    onBlur={() => setIsEditing(false)} // Выходим из режима редактирования, если поле теряет фокус
-                    autoFocus // Автоматически фокусируемся на поле ввода
+                    onBlur={() => setIsEditing(false)}
+                    autoFocus
                 />
             ) : (
                 <span onClick={handleTextClick}>{text}</span>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router";
 import BoardHeader from "./BoardHeader";
+import SideBar from "./SideBar";
 
 function Board () {
     const {boardId}  = useParams();
@@ -28,6 +29,7 @@ function Board () {
     return (
         <div>
             <BoardHeader board={board} setBoard={setBoard}/>
+            <SideBar/>
         </div>
     );
 }

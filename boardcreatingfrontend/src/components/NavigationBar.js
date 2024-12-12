@@ -11,4 +11,4 @@ function NavigationBar ({children}) {
 
 }
 
-export default NavigationBar;
+export default NavigationBar

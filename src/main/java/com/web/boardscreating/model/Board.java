@@ -26,5 +26,8 @@ public class Board {
             inverseJoinColumns = @JoinColumn(name = "element_id"))
     private List<Element> inBoard = new ArrayList<>();
 
+    public void setInBoard(Element element) {
+        inBoard.add(element);
+    }
 
 }

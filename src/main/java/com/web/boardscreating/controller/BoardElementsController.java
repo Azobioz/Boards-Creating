@@ -22,10 +22,6 @@ public class BoardElementsController {
     @Autowired
     private ElementService elementService;
 
-
-    Element block = new Element(1L, Element.Element_Type.BLOCK, new HashSet<>());
-
-
     public BoardElementsController(BoardService boardService, ElementService elementService) {
         this.boardService = boardService;
         this.elementService = elementService;
@@ -36,8 +32,8 @@ public class BoardElementsController {
     public String createBlock(@PathVariable Long boardId) {
 
         BoardDto boardDto = boardService.findBoardById(boardId);
+        Element element = elementService.findElementById(1L);
 
-        Element element = block;
         boardDto.getInBoard().add(element);
         boardService.saveBoard(boardDto);
 

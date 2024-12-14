@@ -21,7 +21,7 @@ public class Board {
     private Long id;
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "board_elements",
             joinColumns = @JoinColumn(name = "board_id"),

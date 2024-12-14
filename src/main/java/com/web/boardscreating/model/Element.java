@@ -8,13 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Entity
+@AllArgsConstructor
 @Table(name="element")
 public class Element {
 
@@ -23,18 +24,20 @@ public class Element {
     private Long id;
     @Enumerated(EnumType.STRING)
     Element_Type element_Type;
-
-
     @ManyToMany(mappedBy = "inBoard")
-    List<Board> elements = new ArrayList<>();
+    Set<Board> elements = new HashSet<>();
+
+
+    public Element() {
+
+    }
+
 
     public enum Element_Type {
         BLOCK, CIRCLE, TRIANGLE, STICKY_NOTE
     }
 
-    public void setElements(Board board) {
-        elements.add(board);
-    }
+
 
 }
 

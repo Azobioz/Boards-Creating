@@ -1,11 +1,16 @@
 package com.web.boardscreating.controller;
 
 import com.web.boardscreating.dto.BoardDto;
+import com.web.boardscreating.mapper.BoardMapper;
+import com.web.boardscreating.model.Board;
 import com.web.boardscreating.model.Element;
 import com.web.boardscreating.service.BoardService;
 import com.web.boardscreating.service.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -17,6 +22,10 @@ public class BoardElementsController {
     @Autowired
     private ElementService elementService;
 
+
+    Element block = new Element(1L, Element.Element_Type.BLOCK, new HashSet<>());
+
+
     public BoardElementsController(BoardService boardService, ElementService elementService) {
         this.boardService = boardService;
         this.elementService = elementService;
@@ -27,11 +36,11 @@ public class BoardElementsController {
     public String createBlock(@PathVariable Long boardId) {
 
         BoardDto boardDto = boardService.findBoardById(boardId);
-        Element blockElement = new Element();
-        elementService.saveElement(blockElement);
-        elementService.setElementType("BLOCK", blockElement.getId());
-        boardDto.addInBoard(blockElement);
+
+        Element element = block;
+        boardDto.getInBoard().add(element);
         boardService.saveBoard(boardDto);
+
         return "Block is created";
     }
 

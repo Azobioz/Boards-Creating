@@ -21,12 +21,12 @@ public class Board {
     private Long id;
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
             name = "board_elements",
             joinColumns = @JoinColumn(name = "board_id"),
             inverseJoinColumns = @JoinColumn(name = "element_id"))
-    private Set<Element> inBoard = new HashSet<>();
+    private List<Element> inBoard = new ArrayList<>();
 
 
 

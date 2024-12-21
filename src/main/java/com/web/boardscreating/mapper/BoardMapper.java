@@ -10,6 +10,7 @@ public class BoardMapper {
         BoardDto boardDto = BoardDto.builder()
                 .id(board.getId())
                 .name(board.getName())
+                .boardElements(board.getBoardElements())
                 .build();
         return boardDto;
     }
@@ -18,6 +19,7 @@ public class BoardMapper {
         Board board = Board.builder()
                 .id(boardDto.getId())
                 .name(boardDto.getName())
+                .boardElements(boardDto.getBoardElements())
                 .build();
         return board;
     }

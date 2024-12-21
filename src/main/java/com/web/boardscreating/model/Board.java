@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,18 +19,7 @@ public class Board {
     private Long id;
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "board_elements",
-            joinColumns = @JoinColumn(name = "board_id"),
-            inverseJoinColumns = @JoinColumn(name = "element_id"))
-    private Set<Element> inBoard = new HashSet<>();
-
-
-
-
-    public void addInBoard(Element element) {
-        inBoard.add(element);
-    }
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<BoardElement> boardElements = new ArrayList<>();
 
 }

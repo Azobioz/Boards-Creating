@@ -14,9 +14,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Проверяем, есть ли уже данные в таблице
         if (elementRepository.count() == 0) {
-            // Создаем элементы для каждого значения enum
             for (Element.Element_Type type : Element.Element_Type.values()) {
                 Element element = new Element();
                 element.setElement_Type(type);

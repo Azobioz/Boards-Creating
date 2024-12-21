@@ -9,7 +9,7 @@ public class ElementMapper {
         Element element = Element.builder()
                 .id(elementDto.getId())
                 .element_Type(elementDto.getElement_Type())
-                .elements(elementDto.getElements())
+                .boardElements(elementDto.getBoardElements())
                 .build();
         return element;
     }
@@ -18,7 +18,7 @@ public class ElementMapper {
         ElementDto elementDto = ElementDto.builder()
                 .id(element.getId())
                 .element_Type(element.getElement_Type())
-                .elements(element.getElements())
+                .boardElements(element.getBoardElements())
                 .build();
         return elementDto;
     }

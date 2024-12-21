@@ -34,7 +34,7 @@ public class BoardElementsController {
         BoardDto boardDto = boardService.findBoardById(boardId);
         Element element = elementService.findElementById(1L);
 
-        boardDto.getInBoard().add(element);
+        boardDto.addInBoardElements(element);
         boardService.saveBoard(boardDto);
 
         return "Block is created";

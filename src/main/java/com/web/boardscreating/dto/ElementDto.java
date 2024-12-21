@@ -1,6 +1,7 @@
 package com.web.boardscreating.dto;
 
 import com.web.boardscreating.model.Board;
+import com.web.boardscreating.model.BoardElement;
 import com.web.boardscreating.model.Element;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,14 +21,7 @@ public class ElementDto {
 
     private Long id;
     Element.Element_Type element_Type;
-    Set<Board> elements = new HashSet<>();
+    private List<BoardElement> boardElements = new ArrayList<>();
 
-    public ElementDto(String whatType) {
-        this.element_Type = Element.Element_Type.valueOf(whatType);
-    }
-
-    public void addElements(Board board) {
-        elements.add(board);
-    }
 
 }

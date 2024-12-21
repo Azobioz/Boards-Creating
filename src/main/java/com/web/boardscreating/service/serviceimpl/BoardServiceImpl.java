@@ -2,6 +2,8 @@ package com.web.boardscreating.service.serviceimpl;
 
 import com.web.boardscreating.dto.BoardDto;
 import com.web.boardscreating.model.Board;
+import com.web.boardscreating.model.BoardElement;
+import com.web.boardscreating.model.Element;
 import com.web.boardscreating.repository.BoardRepository;
 import com.web.boardscreating.service.BoardService;
 import lombok.Builder;

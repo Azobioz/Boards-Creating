@@ -56,10 +56,25 @@ body, html {
     color: white;
 }
 
-.button-delete {
+.button-create-block {
     margin-bottom: 80px;
     width: 100px;
 
+}
+
+.shapeForm {
+    margin-left: 60px;
+    margin-bottom: 40px;
+    width: 200px;
+    height: 100px;
+    background-color: #9CE08B;
+    border-radius: 5px;
+}
+
+.square-form {
+    width: 100px;
+    height: 100px;
+    background-color: red;
 }
 
 .button svg {

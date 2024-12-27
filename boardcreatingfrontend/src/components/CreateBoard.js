@@ -36,7 +36,7 @@ function CreateBoard ({setBoards}) {
 
     return (
         <div>
-            <Button className='button-delete' onClick={sendData} icon={<TiPlus/>}></Button>
+            <Button className='button-create-block' onClick={sendData} icon={<TiPlus/>}></Button>
         </div>
     )
 }

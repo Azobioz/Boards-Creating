@@ -24,7 +24,7 @@ public class BoardElement {
     @ManyToOne
     @JoinColumn(name = "element_id", nullable = false)
     private Element element;
-    
+
     public Element.Element_Type getElementType() {
         return element.getElement_Type();
     }

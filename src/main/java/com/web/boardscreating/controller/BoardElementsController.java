@@ -36,7 +36,6 @@ public class BoardElementsController {
 
         boardDto.addInBoardElements(element);
         boardService.saveBoard(boardDto);
-
         return "Block is created";
     }
 

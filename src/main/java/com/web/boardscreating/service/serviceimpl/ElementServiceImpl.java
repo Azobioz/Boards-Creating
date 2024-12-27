@@ -6,6 +6,7 @@ import com.web.boardscreating.repository.ElementRepository;
 import com.web.boardscreating.service.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ElementServiceImpl implements ElementService {

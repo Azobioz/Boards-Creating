@@ -6,7 +6,7 @@ function SideBar () {
 
     return (
         <div className='side-bar-block'>
-            <Button icon={<BiCustomize/>} onClick={}/>
+            <Button icon={<BiCustomize/>}/>
         </div>
     )
 

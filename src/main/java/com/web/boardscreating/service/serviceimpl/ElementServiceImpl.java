@@ -37,6 +37,6 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public void setElementType(String elementType, Long id) {
         Element element = findElementById(id);
-        element.setElement_type(Element_Type.valueOf(elementType));
+        element.setElementType(Element_Type.valueOf(elementType));
     }
 }

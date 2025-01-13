@@ -1,6 +1,5 @@
 package com.web.boardscreating.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +20,6 @@ public class Board {
     private String name;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<BoardElement> boardElements = new ArrayList<>();
+    private List<BoardElements> boardElements = new ArrayList<>();
 
 }

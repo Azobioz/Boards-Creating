@@ -16,7 +16,7 @@ public class DataInitializer implements CommandLineRunner {
         if (elementRepository.count() == 0) {
             for (Element_Type type : Element_Type.values()) {
                 Element element = new Element();
-                element.setElement_type(type);
+                element.setElementType(type);
                 elementRepository.save(element);
             }
         }

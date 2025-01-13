@@ -24,10 +24,10 @@ public class Element {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
-    Element_Type element_type;
+    Element_Type elementType;
 
     @OneToMany(mappedBy = "element", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardElement> boardElements = new ArrayList<>();
+    private List<BoardElements> boardElements = new ArrayList<>();
 
 
 }

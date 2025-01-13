@@ -2,14 +2,11 @@ package com.web.boardscreating.service.serviceimpl;
 
 import com.web.boardscreating.dto.BoardDto;
 import com.web.boardscreating.model.Board;
-import com.web.boardscreating.model.BoardElement;
-import com.web.boardscreating.model.Element;
 import com.web.boardscreating.repository.BoardRepository;
 import com.web.boardscreating.service.BoardService;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

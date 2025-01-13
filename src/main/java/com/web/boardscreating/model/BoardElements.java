@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "board_elements")
-public class BoardElement {
+public class BoardElements {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,6 @@ public class BoardElement {
     private Element element;
 
     public Element_Type getElementType() {
-        return element.getElement_type();
+        return element.getElementType();
     }
 }

@@ -8,7 +8,7 @@ public class ElementMapper {
     public static Element mapToElement(ElementDto elementDto) {
         Element element = Element.builder()
                 .id(elementDto.getId())
-                .element_type(elementDto.getElement_Type())
+                .elementType(elementDto.getElementType())
                 .boardElements(elementDto.getBoardElements())
                 .build();
         return element;
@@ -17,7 +17,7 @@ public class ElementMapper {
     public static ElementDto mapToElementDto(Element element) {
         ElementDto elementDto = ElementDto.builder()
                 .id(element.getId())
-                .element_Type(element.getElement_type())
+                .elementType(element.getElementType())
                 .boardElements(element.getBoardElements())
                 .build();
         return elementDto;

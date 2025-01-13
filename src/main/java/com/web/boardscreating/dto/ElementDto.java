@@ -3,6 +3,7 @@ package com.web.boardscreating.dto;
 import com.web.boardscreating.model.Board;
 import com.web.boardscreating.model.BoardElement;
 import com.web.boardscreating.model.Element;
+import com.web.boardscreating.model.Element_Type;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ import java.util.Set;
 public class ElementDto {
 
     private Long id;
-    Element.Element_Type element_Type;
+    private Element_Type element_Type;
     private List<BoardElement> boardElements = new ArrayList<>();
 
 

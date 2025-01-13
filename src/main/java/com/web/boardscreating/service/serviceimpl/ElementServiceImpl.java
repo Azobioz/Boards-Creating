@@ -2,11 +2,11 @@ package com.web.boardscreating.service.serviceimpl;
 
 import com.web.boardscreating.model.Element;
 
+import com.web.boardscreating.model.Element_Type;
 import com.web.boardscreating.repository.ElementRepository;
 import com.web.boardscreating.service.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ElementServiceImpl implements ElementService {
@@ -37,6 +37,6 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public void setElementType(String elementType, Long id) {
         Element element = findElementById(id);
-        element.setElement_Type(Element.Element_Type.valueOf(elementType));
+        element.setElement_type(Element_Type.valueOf(elementType));
     }
 }

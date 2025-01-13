@@ -1,6 +1,5 @@
 package com.web.boardscreating.model;
 
-import com.web.boardscreating.model.Element;
 import com.web.boardscreating.repository.ElementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +14,9 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (elementRepository.count() == 0) {
-            for (Element.Element_Type type : Element.Element_Type.values()) {
+            for (Element_Type type : Element_Type.values()) {
                 Element element = new Element();
-                element.setElement_Type(type);
+                element.setElement_type(type);
                 elementRepository.save(element);
             }
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../design/style.css'
+import '../style.css'
 
 function NavigationBar ({children}) {
 

@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from "react-router";
-import BoardHeader from "./BoardHeader";
-import SideBar from "./SideBar";
+import axios from 'axios'
+import {useParams} from "react-router"
+import BoardHeader from "./BoardHeader"
+import SideBar from "./SideBar"
 
 function Board () {
     const {boardId}  = useParams();
     const [board, setBoard] = useState([]);
 
     useEffect(() => {
-        fetchBoard();
+        getBoard();
     }, [])
 
-    const fetchBoard = async () => {
+    const getBoard = async () => {
         try {
-            const response = await fetch('http://localhost:8080/boards/' + boardId);
-            const data = await response.json();
-            setBoard(data);
+            axios.get('http://localhost:8080/boards/' + boardId)
+                .then(res => {setBoard(res.data)})
         }
         catch (error) {
             console.error('Ошибка при получении доски:', error);

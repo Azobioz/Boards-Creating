@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 function EditableBoardName({board, setBoard, initialText }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [text, setText] = useState(initialText); // Текущий текст
+    const [text, setText] = useState(initialText); // Текущее название доски
 
 
     const handleTextClick = () => {
@@ -11,14 +12,7 @@ function EditableBoardName({board, setBoard, initialText }) {
 
 
     const handleTextChange = async () => {
-        await fetch('http://localhost:8080/boards/' + board.id + '/edit', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name: text})
-        })
-
+        axios.put('http://localhost:8080/boards/' + board.id + '/edit', {name: text})
     }
 
     // Обработчик нажатия Enter

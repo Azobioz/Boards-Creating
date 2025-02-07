@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Button from "./Button";
 import { TiPlus } from "react-icons/ti";
+import axios from 'axios'
 
 function CreateBoard ({setBoards}) {
 
@@ -18,9 +19,10 @@ function CreateBoard ({setBoards}) {
                 body: JSON.stringify(data)
             })
 
-            const newBoardList = await fetch('http://localhost:8080/boards')
-            const newData = await newBoardList.json()
-            setBoards(newData)
+            axios.get('http://localhost:8080/boards')
+                .then(res => {
+                    setBoards(res.data)
+                })
 
             if (createBoard.ok) {
                 console.log('Доска успешно создана');

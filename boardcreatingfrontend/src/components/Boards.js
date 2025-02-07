@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import BoardPreview from "./BoardPreview";
 import CreateBoard from "./CreateBoard";
+import axios from "axios";
 
 function Boards({boards, setBoards}) {
 
@@ -10,10 +11,12 @@ function Boards({boards, setBoards}) {
 
     const fetchBoards = async () => {
         try {
-            const response = await fetch('http://localhost:8080/boards')
-            const data = await response.json()
-            console.log(data)
-            setBoards(data)
+
+            axios.get('http://localhost:8080/boards')
+                .then(res => {
+                    setBoards(res.data)
+                })
+
         }
         catch (error) {
             console.error('Ошибка при получении boards: ' + error)

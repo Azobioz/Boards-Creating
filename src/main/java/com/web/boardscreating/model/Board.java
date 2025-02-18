@@ -22,4 +22,6 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<BoardElements> boardElements = new ArrayList<>();
 
+    @ManyToOne
+    private UserEntity user;
 }

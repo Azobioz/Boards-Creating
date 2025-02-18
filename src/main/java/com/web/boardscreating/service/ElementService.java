@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ElementService implements ElementService {
+public class ElementService {
 
     @Autowired
     private ElementRepository elementRepository;
@@ -17,23 +17,18 @@ public class ElementService implements ElementService {
         this.elementRepository = elementRepository;
     }
 
-
-    @Override
     public Element findElementById(Long id) {
         return elementRepository.findById(id).get();
     }
 
-    @Override
     public  void saveElement(Element element) {
         elementRepository.save(element);
     }
 
-    @Override
     public void deleteElementById(Long id) {
         elementRepository.deleteById(id);
     }
 
-    @Override
     public void setElementType(String elementType, Long id) {
         Element element = findElementById(id);
         element.setElementType(Element_Type.valueOf(elementType));

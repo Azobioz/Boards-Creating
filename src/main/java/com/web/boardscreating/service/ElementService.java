@@ -2,10 +2,40 @@ package com.web.boardscreating.service;
 
 import com.web.boardscreating.model.Element;
 
-public interface ElementService {
+import com.web.boardscreating.model.Element_Type;
+import com.web.boardscreating.repository.ElementRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    Element findElementById(Long id);
-    void saveElement(Element element);
-    void deleteElementById(Long id);
-    void setElementType(String elementType, Long id);
+@Service
+public class ElementService implements ElementService {
+
+    @Autowired
+    private ElementRepository elementRepository;
+
+    public ElementService(ElementRepository elementRepository) {
+        this.elementRepository = elementRepository;
+    }
+
+
+    @Override
+    public Element findElementById(Long id) {
+        return elementRepository.findById(id).get();
+    }
+
+    @Override
+    public  void saveElement(Element element) {
+        elementRepository.save(element);
+    }
+
+    @Override
+    public void deleteElementById(Long id) {
+        elementRepository.deleteById(id);
+    }
+
+    @Override
+    public void setElementType(String elementType, Long id) {
+        Element element = findElementById(id);
+        element.setElementType(Element_Type.valueOf(elementType));
+    }
 }

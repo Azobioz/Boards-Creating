@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import NavigationBar from "../components/NavigationBar";
 import CreateBoard from "../components/CreateBoard";
 import Boards from "../components/Boards";
-import {Route, Routes} from "react-router";
-import Board from "../components/Board";
 
 
 function MainPage () {

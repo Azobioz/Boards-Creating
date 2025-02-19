@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import BoardPreview from "./BoardPreview";
 import CreateBoard from "./CreateBoard";
 import axios from "axios";
+import requestToBackend from "./RequestToBackend";
 
 function Boards({boards, setBoards}) {
 
@@ -12,7 +13,7 @@ function Boards({boards, setBoards}) {
     const fetchBoards = async () => {
         try {
 
-            axios.get('http://localhost:8080/boards')
+            requestToBackend().get('/boards')
                 .then(res => {
                     setBoards(res.data)
                 })

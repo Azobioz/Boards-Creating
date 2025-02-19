@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useParams} from "react-router"
 import BoardHeader from "./BoardHeader"
 import SideBar from "./SideBar"
+import requestToBackend from "./RequestToBackend";
 
 function Board () {
     const {boardId}  = useParams();
@@ -14,7 +15,7 @@ function Board () {
 
     const getBoard = async () => {
         try {
-            axios.get('http://localhost:8080/boards/' + boardId)
+            requestToBackend.get('/boards' + boardId)
                 .then(res => {setBoard(res.data)})
         }
         catch (error) {

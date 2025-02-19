@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Button from "./Button";
 import { TiPlus } from "react-icons/ti";
 import axios from 'axios'
+import requestToBackend from "./RequestToBackend";
 
 function CreateBoard ({setBoards}) {
 
@@ -11,15 +12,11 @@ function CreateBoard ({setBoards}) {
 
     const sendData = async () => {
         try {
-            const createBoard = await fetch('http://localhost:8080/boards/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+            const createBoard = await requestToBackend.post('/boards/create', {
+                name
             })
 
-            axios.get('http://localhost:8080/boards')
+            requestToBackend.get('/boards')
                 .then(res => {
                     setBoards(res.data)
                 })

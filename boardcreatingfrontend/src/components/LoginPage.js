@@ -9,7 +9,7 @@ export default function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            const response = await requestToBackend.post('http://localhost:8080/authenticate', {
+            const response = await requestToBackend.post('/authenticate', {
                 username, //данные в теле запроса
                 password
             })

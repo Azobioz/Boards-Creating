@@ -13,7 +13,7 @@ function CreateBoard ({setBoards}) {
     const sendData = async () => {
         try {
             const createBoard = await requestToBackend.post('/boards/create', {
-                name
+                data
             })
 
             requestToBackend.get('/boards')

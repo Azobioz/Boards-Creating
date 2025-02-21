@@ -21,7 +21,7 @@ public class MyUserDetailsService implements UserDetailsService {
         UserEntity user = userRepository.findByUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Нет такого пользвателя: " + username);
+            throw new UsernameNotFoundException("Нет такого пользователя: " + username);
         }
         return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
     }

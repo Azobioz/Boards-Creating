@@ -3,7 +3,6 @@ package com.web.boardscreating.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.security.Keys;
 
-import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
@@ -39,14 +37,15 @@ public class JWTService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return Jwts
+        String jws =  Jwts
                 .builder()
                 .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) //24 часа
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .setSubject(userDetails.getUsername()) // зарегарнный Claim
+                .setIssuedAt(new Date(System.currentTimeMillis())) //зарегарнный Claims
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) //
+                .signWith(getSecretBytes(), SignatureAlgorithm.HS256)
                 .compact();
+        return jws;
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
@@ -62,14 +61,14 @@ public class JWTService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    private Claims extractAllClaims(String token) {
+    private Claims extractAllClaims(String token) { //Получаю все Claims
         try {
             return Jwts
-                    .parserBuilder()
-                    .setSigningKey(getSignInKey())
-                    .build()
-                    .parseClaimsJws(token) //парсинг подписанного токена
-                    .getBody();
+                    .parserBuilder() // Создает билдер для парсера JWT
+                    .setSigningKey(getSecretBytes()) //// Устанавливает ключ для проверки подписи токена
+                    .build() // // Создает парсер
+                    .parseClaimsJws(token) // Парсит токен и проверяет его подпись
+                    .getBody(); // // Возвращает Claims из токена
         }
         catch (io.jsonwebtoken.security.SignatureException e) {
             System.out.println("Invalid JWT signature: " + e.getMessage());
@@ -83,7 +82,7 @@ public class JWTService {
         }
     }
 
-    private Key getSignInKey() {
+    private Key getSecretBytes() {
         byte[] keyBytes = SECRET_KEY.getBytes(StandardCharsets.UTF_8);
         return Keys.hmacShaKeyFor(keyBytes);
     }

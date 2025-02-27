@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {request, setAuthHeader, setAuthToken} from "./axios_helper";
 
 export default function RegisterPage () {
 
@@ -6,6 +7,17 @@ export default function RegisterPage () {
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
     const[confirmPassword, setConfirmPassword] = useState('')
+
+    const handleSubmit = async () =>  {
+        try {
+            const response = await request('POST', '/register', {username, password, email});
+            const token = response.data.token;
+            setAuthHeader(token) // сохраняется токен в localStorage
+        }
+        catch (error) {
+            console.log('Ошибка: ' + error)
+        }
+    }
 
     return (
         <div>
@@ -39,7 +51,7 @@ export default function RegisterPage () {
                     onChange={e => setConfirmPassword(e.target.value)}
                     required
                 />
-                <button type='submit'>Sign up</button>
+                <button onClick={handleSubmit} type='submit'>Sign up</button>
             </form>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import requestToBackend from "./RequestToBackend";
+import axios_helper, {request} from "./axios_helper";
 
 function EditableBoardName({board, setBoard, initialText }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -13,7 +13,7 @@ function EditableBoardName({board, setBoard, initialText }) {
 
 
     const handleTextChange = async () => {
-        await requestToBackend.put('/boards' + board.id + '/edit', {name: text})
+        await request('PUT', '/boards' + board.id + '/edit', {name: text})
     }
 
     // Обработчик нажатия Enter

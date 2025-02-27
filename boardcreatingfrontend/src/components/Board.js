@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios'
 import {useParams} from "react-router"
 import BoardHeader from "./BoardHeader"
 import SideBar from "./SideBar"
-import requestToBackend from "./RequestToBackend";
+
+import {request, setAuthToken} from './axios_helper'
 
 function Board () {
     const {boardId}  = useParams();
@@ -15,7 +15,7 @@ function Board () {
 
     const getBoard = async () => {
         try {
-            requestToBackend.get('/boards' + boardId)
+           request('GET', '/boards' + boardId)
                 .then(res => {setBoard(res.data)})
         }
         catch (error) {

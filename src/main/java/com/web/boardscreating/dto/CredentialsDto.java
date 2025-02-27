@@ -1,14 +1,17 @@
-package com.web.boardscreating.security;
+package com.web.boardscreating.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthResponse {
-    private String token; // JWT токен
+@Builder
+@Data
+public class CredentialsDto {
+
+    private String username;
+    private char[] password;
+
 }

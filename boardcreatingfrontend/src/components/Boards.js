@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import BoardPreview from "./BoardPreview";
 import CreateBoard from "./CreateBoard";
 import axios from "axios";
-import requestToBackend from "./RequestToBackend";
+import axios_helper, {getAuthToken, request, setAuthHeader} from "./axios_helper";
 
 function Boards({boards, setBoards}) {
 
@@ -13,7 +13,7 @@ function Boards({boards, setBoards}) {
     const fetchBoards = async () => {
         try {
 
-            requestToBackend().get('/boards')
+            const response = request('GET','/boards', {})
                 .then(res => {
                     setBoards(res.data)
                 })
@@ -21,6 +21,7 @@ function Boards({boards, setBoards}) {
         }
         catch (error) {
             console.error('Ошибка при получении boards: ' + error)
+            setAuthHeader(null)
         }
     }
 

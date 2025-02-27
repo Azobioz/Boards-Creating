@@ -2,21 +2,28 @@ import React, {useState} from 'react'
 import Button from "./Button";
 import { TiPlus } from "react-icons/ti";
 import axios from 'axios'
-import requestToBackend from "./RequestToBackend";
+import axios_helper, {request} from "./axios_helper";
 
 function CreateBoard ({setBoards}) {
 
     const [data, setData] = useState({
-        name: 'Board'
+        name: 'Board',
+        username:
     })
+
+    const getUser = async () => {
+        try {
+            data.username
+        }
+    }
 
     const sendData = async () => {
         try {
-            const createBoard = await requestToBackend.post('/boards/create', {
+            const createBoard = await request('POST','/boards/create', {
                 data
             })
 
-            requestToBackend.get('/boards')
+            request('Get', '/boards')
                 .then(res => {
                     setBoards(res.data)
                 })

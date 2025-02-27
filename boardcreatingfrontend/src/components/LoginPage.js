@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import requestToBackend from "./RequestToBackend";
+import axios_helper, {request, setAuthHeader, setAuthToken} from "./axios_helper";
 
 export default function LoginPage() {
 
@@ -9,15 +9,13 @@ export default function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            const response = await requestToBackend.post('/authenticate', {
-                username, //данные в теле запроса
-                password
-            })
-            localStorage.setItem('token', response.data.token) // Сохранение токена в localStorage
-            console.log('Успешный вход:');
+           const response = await request('POST', '/authenticate', {username, password});
+           const token = response.data.token;
+           setAuthHeader(token) // сохраняется токен в localStorage
         }
         catch (error) {
             console.error('Ошибка входа:', error)
+            setAuthHeader(null)
         }
     }
 

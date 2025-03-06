@@ -17,7 +17,8 @@ public class UserEntityMapper {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .token(user.getToken())
-//                .boards(user.getBoards().stream().map(board -> mapToBoardDto(board)).collect(Collectors.toSet()))
+                .refreshToken(user.getRefreshToken())
+                .email(user.getEmail())
                 .build();
     }
 

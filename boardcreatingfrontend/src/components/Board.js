@@ -15,8 +15,8 @@ function Board () {
 
     const getBoard = async () => {
         try {
-           request('GET', '/boards' + boardId)
-                .then(res => {setBoard(res.data)})
+           const response = await request('GET', `/boards/${boardId}`)
+           setBoard(response.data)
         }
         catch (error) {
             console.error('Ошибка при получении доски:', error);

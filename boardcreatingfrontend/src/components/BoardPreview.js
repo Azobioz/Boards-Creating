@@ -11,8 +11,12 @@ function BoardPreview ({board, onDelete}) {
 
     const deleteBoard = async () => {
 
-        await request('DELETE', '/boards ' + board.id + '/delete')
+        if (!board.id || isNaN(board.id)) {
+            console.error('Invalid board.id:', board.id);
+            return
+        }
 
+        await request('DELETE', '/boards/' + board.id + '/delete')
         console.log("Удаление: " + board.name)
         onDelete(board.id)
 

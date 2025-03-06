@@ -1,35 +1,34 @@
 import React, {useEffect, useState} from 'react'
 import BoardPreview from "./BoardPreview";
-import CreateBoard from "./CreateBoard";
-import axios from "axios";
-import axios_helper, {getAuthToken, request, setAuthHeader} from "./axios_helper";
 
-function Boards({boards, setBoards}) {
+import { request, setAuthHeader } from "./axios_helper";
+import CreateBoard from "./CreateBoard";
+
+function Boards({ boards, setBoards }) {
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
-        fetchBoards()
-    }, [])
+        fetchBoards();
+    }, []);
 
     const fetchBoards = async () => {
         try {
-
-            const response = request('GET','/boards', {})
-                .then(res => {
-                    setBoards(res.data)
-                })
-
+            const boardsResponse = await request('GET', '/boards', {});
+            console.log('Boards response:', boardsResponse.data);
+            setBoards(boardsResponse.data);
+        } catch (error) {
+            console.error('Ошибка при получении пользователя или досок: ' + error);
+            setAuthHeader(null);
         }
-        catch (error) {
-            console.error('Ошибка при получении boards: ' + error)
-            setAuthHeader(null)
-        }
-    }
+    };
 
     const handleDeleteBoard = (boardId) => {
         setBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
+    };
+
+    if (!boards) {
+        return <div>Загрузка...</div>;
     }
-
-
 
     return (
         <div>
@@ -39,7 +38,7 @@ function Boards({boards, setBoards}) {
                 ))}
             </div>
         </div>
-    )
+    );
 }
 
 export default Boards

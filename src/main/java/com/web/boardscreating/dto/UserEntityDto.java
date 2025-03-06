@@ -22,6 +22,7 @@ public class UserEntityDto {
     private String password;
     private String email;
     private String token;
+    private String refreshToken;
 
     private Set<BoardDto> boards;
 

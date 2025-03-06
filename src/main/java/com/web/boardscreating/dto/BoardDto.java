@@ -19,6 +19,7 @@ public class BoardDto {
 
     private Long id;
     private String name;
+    private Long userId;
     private List<BoardElements> boardElements;
 
     public void addInBoardElements(Element element) {

@@ -11,6 +11,7 @@ public class BoardMapper {
                 .id(board.getId())
                 .name(board.getName())
                 .boardElements(board.getBoardElements())
+                .userId(board.getUser() != null ? board.getUser().getId() : null)
                 .build();
         return boardDto;
     }
@@ -18,7 +19,7 @@ public class BoardMapper {
     public static Board mapToBoard(BoardDto boardDto) {
         Board board = Board.builder()
                 .id(boardDto.getId())
-                .name(boardDto.getName())
+                .name(boardDto.getName() != null && !boardDto.getName().isEmpty() ? boardDto.getName() : "Board")
                 .boardElements(boardDto.getBoardElements())
                 .build();
         return board;

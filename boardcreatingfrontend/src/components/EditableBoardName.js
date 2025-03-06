@@ -13,7 +13,7 @@ function EditableBoardName({board, setBoard, initialText }) {
 
 
     const handleTextChange = async () => {
-        await request('PUT', '/boards' + board.id + '/edit', {name: text})
+        await request('PUT', `/boards/${board.id}/edit`, {name: text})
     }
 
     // Обработчик нажатия Enter

@@ -29,6 +29,7 @@ public class UserEntity implements UserDetails {
     private String password;
     private String email;
     private String token;
+    private String refreshToken;
 
     @OneToMany(mappedBy="user")
     private Set<Board> boards;

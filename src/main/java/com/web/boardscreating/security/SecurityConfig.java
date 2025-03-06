@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .and()
                 .addFilterBefore(new JWTAuthenticationFilter(userAuthProvider), BasicAuthenticationFilter.class) //Jwt фильтер до любых фильтров spring security
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.POST, "/authenticate", "/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/authenticate", "/register", "/refresh").permitAll()
                         .anyRequest().authenticated());
 
         return http.build();

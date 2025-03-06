@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.CharBuffer;
 
@@ -63,4 +64,17 @@ public class MyUserService { //будет обрабатывать логин и
         return mapToUserEntityDto(savedUser);
     }
 
+    public UserEntityDto updateTokens(String username, String token, String refreshToken) {
+        UserEntity user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("No such username: " + username);
+        }
+        user.setToken(token);
+        user.setRefreshToken(refreshToken);
+        UserEntity updatedUser = userRepository.save(user);
+        return mapToUserEntityDto(updatedUser);
+    }
+
 }
+
+

@@ -29,7 +29,7 @@ export default function LoginPage() {
             <label>Username</label>
             <input placeholder='Username' value={username} onChange={e => setUsername(e.target.value)}/>
             <label>Password</label>
-            <input placeholder='Password' value={password} onChange={e => setPassword(e.target.value)}/>
+            <input placeholder='Password' type='password' value={password} onChange={e => setPassword(e.target.value)}/>
             <button onClick={handleLogin}>Login</button>
         </div>
     )
